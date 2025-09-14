@@ -1,0 +1,41 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff
+*.sqlite3
+db.sqlite3
+media/
+*.log
+
+# Environment variables
+.env
+
+# Virtual environment
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# VSCode settings
+.vscode/
+
+# Static files (optional, if you want to ignore)
+staticfiles/
+static/
+
+# Django migrations
+core/migrations/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+.coverage
+htmlcov/
+
+# Others
+*.pot

@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Prescriptions - MediVault</title>
+    <link rel="stylesheet" href="{% static 'css/upload_prescription.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+     <nav class="navbar">
+          <div class="navbar-left">
+              <a href="{% url 'home' %}" title="Home" class="home-icon">
+                  <i class="fa-solid fa-house fa-lg"></i>
+              </a>
+          </div>
+          <div class="navbar-title">🛡️ MediVault</div>
+          <div class="navbar-profile">
+              <a href="{% url 'profile' %}" title="Profile">
+                  <i class="fa-solid fa-user-circle fa-2x"></i>
+              </a>
+          </div>
+      </nav>
+
+
+    <div class="container">
+
+        <!-- Part 1: Upload and Search -->
+        <div class="upload-search">
+
+            <div class="upload-section">
+                <h1 class="page-title">💊 Prescription Management</h1>
+
+<div class="container">
+  <!-- Upload and Search Sections -->
+  <div class="upload-search">
+    <div class="upload-section">
+      <h2>📤 Upload Your Prescription Files</h2>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label class="custom-file">
+          <input type="file" name="file" accept="application/pdf" required>
+          <span>📎 Choose File</span>
+        </label>
+        <button type="submit" class="action-btn">Upload</button>
+      </form>
+    </div>
+
+    <div class="search-section">
+      <h2>🔍 Search Your Files</h2>
+      <form method="GET">
+        <input type="text" name="query" placeholder="Search files..." value="{{ query }}">
+        <button type="submit" class="action-btn">Search</button>
+      </form>
+
+                {% if query %}
+                    {% if search_results %}
+                        <ul>
+                        {% for file in search_results %}
+                            <li>
+                                {{ file.file_name }}
+                                <a href="{% url 'preview_prescription' file.id %}" target="_blank">👁 Preview</a>
+                                <a href="{% url 'download_prescription' file.id %}" target="_blank">⬇ Download</a>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>No files found for "{{ query }}"</p>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+
+        <!-- Part 2: Recent Files -->
+        <div class="recent-files">
+            <h2>🕒 Recently Uploaded Files (Last 30 days)</h2>
+            {% if recent_files %}
+                <ul>
+                    {% for file in recent_files %}
+                        <li>
+                            {{ file.file_name }} ({{ file.uploaded_at|date:"M d, Y H:i" }})
+                            <a href="{% url 'preview_prescription' file.id %}" target="_blank">👁 Preview</a>
+                            <a href="{% url 'download_prescription' file.id %}" target="_blank">⬇ Download</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No recent files found.</p>
+            {% endif %}
+        </div>
+
+        {% for message in messages %}
+            <p class="{{ message.tags }}">{{ message }}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
