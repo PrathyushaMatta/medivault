@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Blood Tests - MediVault</title>
+  <link rel="stylesheet" href="{% static 'css/upload_prescription.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-left">
+      <a href="{% url 'home' %}" title="Home" class="home-icon">
+        <i class="fa-solid fa-house fa-lg"></i>
+      </a>
+    </div>
+    <div class="navbar-title">🛡️ MediVault</div>
+    <div class="navbar-profile">
+      <a href="{% url 'profile' %}" title="Profile">
+        <i class="fa-solid fa-user-circle fa-2x"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Page Title Outside Container -->
+  <h1 class="page-title">💉🩸 Blood Test Management</h1>
+
+  <div class="container">
+    <!-- Upload and Search Section -->
+    <div class="upload-search">
+      <!-- Upload -->
+      <div class="upload-section">
+        <h2>📤 Upload Your Blood Test Files</h2>
+        {% if success_message %}
+          <p class="success">{{ success_message }}</p>
+        {% endif %}
+        {% if error_message %}
+          <p class="error">{{ error_message }}</p>
+        {% endif %}
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <label class="custom-file">
+            <input type="file" name="file" accept="application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+            <span>📎 Choose File</span>
+          </label>
+          <button type="submit" class="action-btn" name="upload">Upload</button>
+        </form>
+      </div>
+
+      <!-- Search -->
+      <div class="search-section">
+        <h2>🔍 Search Your Files</h2>
+        {% if search_error %}
+          <p class="error">{{ search_error }}</p>
+        {% endif %}
+        <form method="POST">
+          {% csrf_token %}
+          <input type="text" name="search_query" placeholder="Search by file name">
+          <button type="submit" class="action-btn" name="search">Search</button>
+        </form>
+
+        {% if search_results %}
+          <ul>
+            {% for file in search_results %}
+              <li>
+                {{ file.file_name }} - {{ file.uploaded_at }}
+                <a href="{% url 'bloodtest_preview' file.id %}" target="_blank">👁 Preview</a>
+                <a href="{% url 'bloodtest_download' file.id %}" target="_blank">⬇ Download</a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- Recent Files -->
+    <div class="recent-files">
+      <h2>🕒 Recently Uploaded Blood Test Files (Last 30 days)</h2>
+      {% if recent_files %}
+        <ul>
+          {% for file in recent_files %}
+            <li>
+              {{ file.file_name }} ({{ file.uploaded_at|date:"M d, Y H:i" }})
+              <a href="{% url 'bloodtest_preview' file.id %}" target="_blank">👁 Preview</a>
+              <a href="{% url 'bloodtest_download' file.id %}" target="_blank">⬇ Download</a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No recent files found.</p>
+      {% endif %}
+    </div>
+
+    {% for message in messages %}
+      <p class="{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+  </div>
+</body>
+</html>

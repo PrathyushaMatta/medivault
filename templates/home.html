@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MediVault HomePage</title>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-title">🛡️ MediVault</div>
+    <div class="navbar-profile">
+      <a href="{% url 'profile' %}" title="Profile">
+        <i class="fa-solid fa-user-circle fa-2x"></i>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+<div class="home-container">
+  <h2 class="welcome-title">Hello, Welcome {{ user.name }}!</h2>
+  <p class="upload-question">What type of files would you like to upload?</p>
+
+  <div class="upload-wrapper">
+    <div class="file-links">
+      <a href="{% url 'upload_prescription' %}" class="file-link">Prescription Files</a>
+      <a href="{% url 'upload_xray' %}" class="file-link">X-ray Files</a>
+      <a href="{% url 'upload_bloodtests' %}" class="file-link">Blood Test Files</a>
+      <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

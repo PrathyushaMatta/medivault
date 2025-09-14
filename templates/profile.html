@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile - MediVault</title>
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+  <div class="navbar-left">
+    <a href="{% url 'home' %}" title="Home">
+      <i class="fa-solid fa-house fa-lg"></i>
+    </a>
+  </div>
+  <div class="navbar-title">🛡️ MediVault</div>
+
+  <div class="navbar-right">
+    <a href="{% url 'logout' %}" title="Logout">
+      <i class="fa-solid fa-right-from-bracket fa-lg logout-icon"></i>
+    </a>
+  </div>
+</nav>
+
+  <!-- Main Container -->
+  <div class="container profile-container">
+    <!-- Left Panel -->
+    <div class="left-panel">
+      <div class="profile-card">
+        <!-- Profile Image -->
+        <div class="profile-img-wrapper">
+          {% if user.profile_picture %}
+          <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="profile-img">
+          {% else %}
+          <img src="{% static 'images/default_profile.jpg' %}" alt="Default Profile Picture" class="profile-img">
+          {% endif %}
+          <h2 class="user-name">{{ user.name }}</h2>
+          <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="profile_picture" class="upload-img">
+            <button type="submit" name="action" value="upload_image" class="edit-profile-btn">Edit Profile</button>
+          </form>
+        </div>
+
+        <!-- Bio Section -->
+        <div class="bio-section">
+          <h3>Bio</h3>
+          <div class="bio-field">
+            <label>Name:</label>
+            <p>{{ user.name }}</p>
+          </div>
+          <div class="bio-field">
+            <label>Phone Number:</label>
+            <p>{{ user.phone_number }}</p>
+          </div>
+          <div class="bio-field">
+            <label>Address:</label>
+            <p>{{ user.address|default:"Not provided" }}</p>
+          </div>
+        </div>
+
+        <!-- Edit Form -->
+        <form method="POST">
+          {% csrf_token %}
+          <div class="edit-fields">
+            <input type="text" name="name" value="{{ user.name }}" placeholder="Edit Name">
+            <input type="text" name="phone_number" value="{{ user.phone_number }}" placeholder="Edit Phone Number">
+            <textarea name="address" placeholder="Edit Address">{{ user.address }}</textarea>
+          </div>
+          <div class="button-row">
+            <button type="button" class="edit-btn" onclick="toggleEdit()">Edit</button>
+            <button type="submit" name="action" value="update_bio" class="update-btn">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="right-panel">
+      <h3>📊 File Analysis</h3>
+      <canvas id="fileChart"
+        data-prescriptions="{{ prescription_count|default_if_none:0 }}"
+        data-xrays="{{ xray_count|default_if_none:0 }}"
+        data-bloodtests="{{ bloodtest_count|default_if_none:0 }}">
+      </canvas>
+    </div>
+  </div>
+
+  <!-- Chart Script -->
+  <script>
+    const canvas = document.getElementById('fileChart');
+    const ctx = canvas.getContext('2d');
+
+    const fileChart = new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Prescriptions', 'X-Rays', 'Blood Tests'],
+        datasets: [{
+          label: 'File Analysis',
+          data: [
+            parseInt(canvas.dataset.prescriptions),
+            parseInt(canvas.dataset.xrays),
+            parseInt(canvas.dataset.bloodtests)
+          ],
+          backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56']
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                const label = context.label || '';
+                const value = context.raw || 0;
+                return `${label}: ${value}`;
+              }
+            }
+          }
+        }
+      }
+    });
+
+    function toggleEdit() {
+      document.querySelector('.edit-fields').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
