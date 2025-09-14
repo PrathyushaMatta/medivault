@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+}
+
+.page-container {
+  text-align: center;
+  padding-top: 30px;
+}
+
+
+/* Page title */
+.title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #001f3f; /* Navy blue */
+  margin-bottom: 20px;
+}
+.subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-top: -10px;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+/* Form container */
+.form-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color:#001f3f; /* Navy blue */
+  margin-bottom: 20px;
+}
+
+.register-prompt {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.register-prompt a {
+  color: #001f3f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-prompt a:hover {
+  text-decoration: underline;
+}
+/* Labels */
+label {
+  text-align: justify ;
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 500;
+  color: #333;
+  padding-left: 40px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="number"],
+input[type="password"] {
+  width: 80%;               /* ✅ Smaller width */
+  padding: 8px;             /* ✅ Slightly reduced padding */
+  margin-bottom: 14px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Buttons */
+button {
+  background-color: #001f3f ; /* ✅ Navy blue */
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #001737; /* Slightly darker navy on hover */
+}
+
+/* Timer */
+#timer {
+  font-weight: bold;
+  color: #d9534f;
+  margin-bottom: 10px;
+}
+
+/* Messages */
+p.error {
+  color: #d9534f;
+  font-size: 14px;
+}
+
+p.success {
+  color: #28a745;
+  font-size: 14px;
+}
+

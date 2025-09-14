@@ -1,0 +1,106 @@
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #001f3f;
+    color: white;
+}
+
+.navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.navbar-profile a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Font family for clean readability */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for upload section */
+.upload-wrapper {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Welcome title */
+.welcome-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #001f3f;
+  margin-bottom: 10px;
+}
+
+/* Upload question styling */
+.upload-question {
+  font-size: 16px;
+  color: #001f3f;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+/* File links already styled — no change needed */
+/* Home container styling */
+.home-container {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.file-links {
+    margin-top: 30px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.file-link {
+    display: block;
+    margin: 10px 0;
+    color: #001f3f;
+    font-size: 18px;
+    text-decoration: none;
+    border: 1px solid #001f3f;
+    padding: 10px 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.file-link:hover {
+    background-color: #001f3f;
+    color: white;
+}
+
+.logout-btn {
+  display: block;
+  margin: 20px auto 0;
+  background-color: #001f3f; /* Navy blue */
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: lightgray;
+  color: #001f3f;
+}

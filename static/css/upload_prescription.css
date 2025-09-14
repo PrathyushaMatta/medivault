@@ -1,0 +1,129 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #001f3f;
+    color: white;
+}
+
+.navbar-left {
+    flex: 0 0 auto;
+}
+
+.home-icon {
+    color: white;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navbar-title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.navbar-profile a {
+    color: white;
+    text-decoration: none;
+}
+
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.upload-search {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.upload-section, .search-section {
+    flex: 1;
+}
+
+/* Page title styling */
+.page-title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  color: #001f3f;
+  margin: 40px 0 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Custom file input styling */
+.custom-file {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.custom-file input[type="file"] {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.custom-file span {
+  display: inline-block;
+  background-color: #001f3f;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Action buttons (Upload, Search) */
+.action-btn {
+  background-color: #001f3f;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.action-btn:hover {
+  background-color: #001737;
+}
+
+.recent-files {
+    margin-top: 30px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+a {
+    margin-left: 10px;
+    color: #001f3f;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
