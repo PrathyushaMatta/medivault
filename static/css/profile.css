@@ -1,0 +1,194 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #001f3f;
+  color: white;
+}
+
+.navbar-left,
+.navbar-right {
+  flex: 0 0 auto;
+}
+
+.navbar-title {
+  flex-grow: 1;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-left a,
+.navbar-right a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Smaller icon size */
+.fa-lg {
+  font-size: 1.2rem;
+}
+
+.navbar-icons a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.navbar-profile a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Main Layout */
+.profile-container {
+  display: flex;
+  gap: 30px;
+  padding: 40px;
+}
+
+/* Left Panel */
+.left-panel {
+  flex: 1;
+}
+
+.profile-card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.profile-img-wrapper {
+  text-align: center;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #001f3f;
+}
+
+.user-name {
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #001f3f;
+}
+
+.upload-img {
+  margin-top: 10px;
+}
+
+.edit-profile-btn {
+  margin-top: 10px;
+  background-color: #001f3f;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-profile-btn:hover {
+  background-color: #001737;
+}
+
+/* Bio Section */
+.bio-section {
+  margin-top: 30px;
+}
+
+.bio-section h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #001f3f;
+  margin-bottom: 10px;
+}
+
+.bio-field {
+  margin-bottom: 10px;
+}
+
+.bio-field label {
+  font-weight: 600;
+  color: #333;
+}
+
+.bio-field p {
+  margin: 4px 0;
+  color: #555;
+}
+
+/* Edit Form */
+.edit-fields {
+  display: none;
+  margin-top: 20px;
+}
+
+.edit-fields input,
+.edit-fields textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Buttons */
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.edit-btn,
+.update-btn {
+  background-color: #001f3f;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.edit-btn:hover,
+.update-btn:hover {
+  background-color: #001737;
+}
+
+/* Right Panel */
+.right-panel {
+  flex: 1;
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.right-panel h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #001f3f;
+  margin-bottom: 20px;
+}
+
+canvas {
+  max-width: 100%;
+  height: auto;
+}
