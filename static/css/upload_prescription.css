@@ -31,12 +31,14 @@
 
 
 .container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.2); /* semi-transparent white */
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 31, 63, 0.3); /* subtle blue glow */
+  backdrop-filter: blur(8px); /* frosted glass effect */
+  transition: all 0.5s ease-in-out;
 }
 
 .upload-search {
@@ -54,7 +56,7 @@
   text-align: center;
   font-size: 28px;
   font-weight: bold;
-  color: #001f3f;
+  color: white;
   margin: 40px 0 20px;
   font-family: 'Segoe UI', sans-serif;
 }
@@ -127,3 +129,71 @@ a:hover {
     text-decoration: underline;
 }
 
+
+.recent-files-table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    margin-top: 20px !important;
+    background-color: #e6f2ff !important;
+    border: 2px solid #001f3f !important;
+}
+
+.recent-files-table th,
+.recent-files-table td {
+    border: 1px solid #001f3f !important;
+    padding: 12px 16px !important;
+    text-align: left !important;
+}
+
+.recent-files-table th {
+    background-color: #f0f8ff; /* Darker blue for header */
+    color: #001f3f;
+    font-weight: 600;
+}
+
+.recent-files-table tr:nth-child(even) {
+    background-color: #f0f8ff; /* Slightly lighter blue for alternate rows */
+}
+
+.recent-files-table a {
+    color: #001f3f;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.recent-files-table a:hover {
+    text-decoration: underline;
+}
+
+body {
+  animation: fadeInPage 1s ease forwards;
+  background: linear-gradient(to right, #001f3f, #336597ff);
+  font-family: 'Segoe UI', sans-serif;
+  color: #001f3f;
+}
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container {
+  animation: slideUp 1s ease forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

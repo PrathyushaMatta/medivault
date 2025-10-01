@@ -23,8 +23,8 @@ venv.bak/
 .vscode/
 
 # Static files (optional, if you want to ignore)
-staticfiles/
-static/
+#staticfiles/
+#static/
 
 # Django migrations
 core/migrations/
