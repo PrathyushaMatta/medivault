@@ -8,6 +8,7 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("", lambda request: redirect("register")),
     path("login/",views.login,name="login"),
+    #path("test_login/",views.test_login,name="test_login"),
     path("home/",views.home,name="home"),
     path("profile/",views.profile,name="profile"),
     path("upload_prescription/", views.upload_prescription, name="upload_prescription"),

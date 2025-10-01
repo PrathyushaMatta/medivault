@@ -1,5 +1,6 @@
 from .register import register
 from .login import login
+#from .test_login import test_login
 from .home import home
 from .profile import profile
 from .upload_prescription import( upload_prescription,download_prescription,preview_prescription,

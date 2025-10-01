@@ -29,7 +29,9 @@
 
         <button type="submit" name="action" value="send_otp">Send OTP</button>
         <div class="login-redirect">
-          <p>Already registered? <a href="{% url 'login' %}">Login here</a></p>
+          <p>Already registered? 
+            <a href="{% url 'login' %}">Login here</a>
+          </p>
         </div>
 
         {% if show_otp_field %}
@@ -38,7 +40,7 @@
 
           <p id="timer"></p>
 
-          <button type="submit" name="action" value="verify_otp" id="verifyBtn">Verify OTP</button>
+          <button type="submit" name="action" value="verify_otp" id="verifyBtn">Verify OTP</button><br >
 
           {% if resend_otp %}
             <button type="submit" name="action" value="resend_otp" id="resendBtn">Resend OTP</button>

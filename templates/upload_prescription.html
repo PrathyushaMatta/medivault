@@ -77,15 +77,31 @@
         <div class="recent-files">
             <h2>🕒 Recently Uploaded Files (Last 30 days)</h2>
             {% if recent_files %}
-                <ul>
+                <table class="recent-files-table">
+                <thead>
+                    <tr>
+                    <th>Uploaded At(IST)</th>
+                    <th>File</th>
+                    <th>Preview</th>
+                    <th>Download</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {% for file in recent_files %}
-                        <li>
-                            {{ file.file_name }} ({{ file.uploaded_at|date:"M d, Y H:i" }})
-                            <a href="{% url 'preview_prescription' file.id %}" target="_blank">👁 Preview</a>
-                            <a href="{% url 'download_prescription' file.id %}" target="_blank">⬇ Download</a>
-                        </li>
+                    <tr>
+                       {% load tz %}
+                        <td>{% localtime on %}{{ file.uploaded_at|date:"M d, Y H:i" }}{% endlocaltime %}</td>
+                        <td>{{ file.file_name }}</td>
+                        <td>
+                        <a href="{% url 'preview_prescription' file.id %}" target="_blank">👁 Preview</a>
+                        </td>
+                        <td>
+                        <a href="{% url 'download_prescription' file.id %}" target="_blank">⬇ Download</a>
+                        </td>
+                    </tr>
                     {% endfor %}
-                </ul>
+                </tbody>
+                </table>
             {% else %}
                 <p>No recent files found.</p>
             {% endif %}
