@@ -39,3 +39,12 @@ htmlcov/
 
 # Others
 *.pot
+
+#test files
+test1.pdf
+
+locustfile.py
+
+core/views/test_login.py
+
+core/utils/sms.py
